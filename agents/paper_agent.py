@@ -1,5 +1,5 @@
 from agents import get_llm
-from tools.code_tools import lance_search
+from tools.document_tools import lance_search
 from config.prompts import paper_prompt
 
 def create_paper_agent_chain():

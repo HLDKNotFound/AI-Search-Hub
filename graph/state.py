@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 # ==========================================
 
 class Task(BaseModel):
-    taks_id: int = Field(
+    task_id: int = Field(
         description="ID of the task."
     )
     description: str = Field(
@@ -32,15 +32,15 @@ class CriticFeedback(BaseModel):
     feedback: str = Field(
         description="Details about the error or unsatisfied data."
     )
-    error_type: Literal["needs_data", "format_error", "none"] = Field(
-        description="Error type: need data, format error or none."
+    error_type: Literal["needs_web_data", "needs_paper_data", "format_error"] = Field(
+        description="Error type: need web data, need paper data or format error"
     )
 
 #===========================================
 # 2. GRAPH STATE 
 # ==========================================
 
-class GraphState(TypedDict):
+class State(TypedDict):
     original_query: str 
     plan: ResearchPlan
 

@@ -121,7 +121,7 @@ visual_prompt = ChatPromptTemplate.from_messages([
     )
 ])
 
-prompt = ChatPromptTemplate.from_messages([
+writer_prompt = ChatPromptTemplate.from_messages([
     ("system",
     """
     You are an expert AI Technical Writer.
