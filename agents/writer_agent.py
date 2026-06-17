@@ -15,9 +15,9 @@ def writer_node(state: dict) -> dict:
     feedback = state.get("feedback", "")
 
     response = chain.invoke({
-        "origin_query": original_query,
+        "original_query": original_query,
         "research_data": research_data,
-        "visual_asserts": visual_assets,
+        "visual_assets": visual_assets,
         "critic_feedback": feedback
     })
 

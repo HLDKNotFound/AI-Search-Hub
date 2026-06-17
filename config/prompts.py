@@ -1,7 +1,8 @@
 from langchain_core.prompts import ChatPromptTemplate
 
 manager_prompt = ChatPromptTemplate.from_messages([
-    ("system", """You are the Manager Agent of an AI Research Hub.
+    ("system", """
+    You are the Manager Agent of an AI Research Hub.
 
     Your responsibilities:
     1. Analyze the user's research request.
@@ -13,7 +14,13 @@ manager_prompt = ChatPromptTemplate.from_messages([
     - web_agent: gathers real-time information, news, market trends, product details, and API benchmarks.
     - paper_agent: reads, summarizes, and analyzes research papers, technical reports, and academic literature.
 
-    Ensure that each task is specific, actionable, and assigned to exactly one agent."""),
+    Requirements:
+    - Generate a concise objective.
+    - Generate at most 5 tasks.
+    - Each task must be specific and actionable.
+    - Use only 'web_agent' or 'paper_agent' as agent_assignee.
+    - Return data matching the required structured schema.
+    """),
 
     ("human", "Research request: {original_query}")
 ])
@@ -28,7 +35,7 @@ web_prompt = ChatPromptTemplate.from_messages([
     4. Present the results in a clear, concise, and well-structured format.
     5. Focus on factual accuracy and cite sources whenever possible."""),
 
-    ("human", """Overall objective: {core_objective}
+    ("human", """Overall objective: {objective}
     Assigned tasks:
     {tasks}
 
@@ -47,7 +54,7 @@ paper_prompt = ChatPromptTemplate.from_messages([
     6. Base your answers strictly on retrieved information and avoid unsupported assumptions.
     7. Reference document sources, filenames, or metadata whenever available."""),
 
-    ("human", """Overall objective: {core_objective}
+    ("human", """Overall objective: {objective}
 
     Assigned tasks:
     {tasks}

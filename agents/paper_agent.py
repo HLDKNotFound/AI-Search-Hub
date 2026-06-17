@@ -22,7 +22,7 @@ def paper_agent_node(state: dict) -> dict:
     
     chain = create_paper_agent_chain()
     response = chain.invoke({
-        "core_objective": plan.core_objective,
+        "objective": plan.objective,
         "tasks": "\n".join([t.description for t in paper_tasks])
     })
 

@@ -23,7 +23,7 @@ def web_agent_node(state: dict) -> dict:
     
     chain = create_web_agent_chain()
     response = chain.invoke({
-        "core_objective": plan.core_objective,
+        "objective": plan.objective,
         "tasks": "\n".join([t.description for t in web_tasks])
     })
 

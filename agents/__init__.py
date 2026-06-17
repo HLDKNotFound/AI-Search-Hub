@@ -8,5 +8,6 @@ def get_llm(model_name: str = "google/gemini-2.5-flash", temperature: float = 0)
         model=model_name,
         api_key=api_key,
         base_url="https://openrouter.ai/api/v1",
-        temperature=temperature
+        temperature=temperature,
+        max_tokens=5000
     )
