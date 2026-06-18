@@ -1,7 +1,11 @@
 import os
 from langchain_openai import ChatOpenAI
 
-def get_llm(model_name: str = "google/gemini-2.5-flash", temperature: float = 0):
+def get_llm(
+    model_name: str = "google/gemini-2.5-flash", 
+    temperature: float = 0,
+    max_tokens: int = 5000
+):
     api_key = os.getenv("OPENROUTER_API_KEY")
 
     return ChatOpenAI(
@@ -9,5 +13,5 @@ def get_llm(model_name: str = "google/gemini-2.5-flash", temperature: float = 0)
         api_key=api_key,
         base_url="https://openrouter.ai/api/v1",
         temperature=temperature,
-        max_tokens=5000
+        max_tokens=max_tokens
     )

@@ -1,0 +1,1 @@
+# Config embedding model

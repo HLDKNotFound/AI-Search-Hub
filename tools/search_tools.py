@@ -26,7 +26,7 @@ def tavily_search(
 
     try:
         # Call the Tavily Search API
-        response = tavily_client(
+        response = tavily_client.search(
             query=query,
             search_depth=search_depth,
             max_results=max_results,

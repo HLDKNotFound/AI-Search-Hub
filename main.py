@@ -20,4 +20,8 @@ for output in app.stream(inputs):
 
 print("\n" + "="*20 + " FINAL DRAFT " + "="*20)
 
-print(final_draft)
+
+if final_draft:
+    print(final_draft)
+    with open("result.md", "w", encoding="utf-8") as f:
+        f.write(final_draft)

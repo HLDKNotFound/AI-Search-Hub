@@ -16,10 +16,10 @@ def create_workflow():
     workflow.add_edge("manager_agent", "paper_agent")
     
     # Fan-int: Wait for 2 collector agent then run Visaul Agent
-    workflow.add_edge("web_agent", "writer_agent")
-    workflow.add_edge("paper_agent", "writer_agent")
+    workflow.add_edge("web_agent", "visual_agent")
+    workflow.add_edge("paper_agent", "visual_agent")
 
-    # workflow.add_edge("visual_agent", "writer_agent")
+    workflow.add_edge("visual_agent", "writer_agent")
     workflow.add_edge("writer_agent", "critic_agent")
 
     # Conditional Edges to route Critic Agent
