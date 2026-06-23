@@ -8,9 +8,9 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 def create_schema(vector_dim: int) -> pa.schema:
     return pa.schema([
         pa.field("vector", pa.list_(pa.float32(), vector_dim)),
-        pa.field("text", pa.string),
-        pa.field("source_file", pa.string),
-        pa.field("chunk_index", pa.int16)
+        pa.field("text", pa.string()),
+        pa.field("source_file", pa.string()),
+        pa.field("chunk_index", pa.int16())
     ])
 
 class LanceDBManager:
@@ -32,7 +32,7 @@ class LanceDBManager:
 
         self.db = lancedb.connect(self.db_path)
 
-        if self.table_name not in self.db.table_names:
+        if self.table_name not in self.db.table_names():
             self.table = self.db.create_table(
                 self.table_name,
                 schema=schema
