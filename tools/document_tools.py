@@ -1,4 +1,7 @@
 from langchain_core.tools import tool
+from vectorstore import LanceDBManager
+
+db_manager = LanceDBManager()
 
 @tool
 def lance_search(query: str) -> str:
@@ -8,4 +11,10 @@ def lance_search(query: str) -> str:
     Args:
         query (str): The search query.
     """
-    return ""
+    
+    try:
+        results = db_manager.similarity_search(
+            query=query,
+        )
+    except Exception as e:
+        return f"LANCEDB SEARCH ERROR: {str(e)}"
