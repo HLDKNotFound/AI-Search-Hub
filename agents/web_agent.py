@@ -1,6 +1,6 @@
 from agents import get_llm
-from tools.search_tools import tavily_search
-from config.prompts import web_prompt
+from tools import tavily_search
+from config import web_prompt
 
 from langchain.agents import create_agent
 
@@ -33,6 +33,7 @@ def web_agent_node(state: dict) -> dict:
     })
     
     search_result = response["messages"][-1].content
+    
     return {
         "research_data": [f"[WEB DATA]: {search_result}"]
     }

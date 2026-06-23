@@ -1,6 +1,6 @@
 from graph.state import CriticFeedback
 from agents import get_llm
-from config.prompts import critic_prompt
+from config import critic_prompt
 
 def create_critic_chain():
     llm = get_llm(temperature=0)
@@ -10,7 +10,7 @@ def create_critic_chain():
 
     return critic_prompt | structured_llm
 
-def critic_node(state: dict) -> dict:
+def critic_agent_node(state: dict) -> dict:
     chain = create_critic_chain()
     feedback = chain.invoke({
         "original_query": state["original_query"],

@@ -2,7 +2,7 @@ import os
 from langchain_experimental.tools import PythonREPLTool
 from langchain.agents import create_agent
 from agents import get_llm
-from config.prompts import visual_prompt
+from config import visual_prompt
 from config.settings import chart_path
 
 def create_visual_agent_chain():
@@ -16,7 +16,7 @@ def create_visual_agent_chain():
 
     return visual_prompt | visual_agent
 
-def visual_node(state: dict) -> dict:
+def visual_agent_node(state: dict) -> dict:
     research_data = "\n".join(state.get("research_data", []))
 
     if not research_data:

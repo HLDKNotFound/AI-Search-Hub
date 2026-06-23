@@ -1,6 +1,6 @@
 from agents import get_llm
-from tools.document_tools import lance_search
-from config.prompts import paper_prompt
+from tools import lance_search
+from config import paper_prompt
 
 from langchain.agents import create_agent
 

@@ -1,12 +1,12 @@
 from agents import get_llm
-from config.prompts import writer_prompt
+from config import writer_prompt
 
 def create_writer_chain():
     llm = get_llm(temperature=0.1)
 
     return writer_prompt | llm
 
-def writer_node(state: dict) -> dict:
+def writer_agent_node(state: dict) -> dict:
     chain = create_writer_chain()
 
     original_query = state.get("original_query", "")

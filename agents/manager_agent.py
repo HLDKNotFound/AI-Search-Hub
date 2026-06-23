@@ -1,6 +1,6 @@
 from langchain.messages import SystemMessage, HumanMessage
 from graph.state import ResearchPlan
-from config.prompts import manager_prompt
+from config import manager_prompt
 from agents import get_llm
 
 def create_manager_chain():
@@ -11,7 +11,7 @@ def create_manager_chain():
 
     return manager_prompt | structured_llm
 
-def manager_node(state: dict) -> dict:
+def manager_agent_node(state: dict) -> dict:
     chain = create_manager_chain()
     plan = chain.invoke({
         "original_query": state["original_query"]
