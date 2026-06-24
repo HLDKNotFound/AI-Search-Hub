@@ -1,6 +1,7 @@
 import os
 import lancedb
 import pyarrow as pa
+from functools import lru_cache
 
 from vectorstore.embedding import get_embedding_model
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -80,7 +81,7 @@ class LanceDBManager:
         ]
 
         self.table.add(data_to_insert)
-        print(f"Store data fromm {source_name} to LanceDB")
+        print(f"Store data from {source_name} to LanceDB")
 
     def similarity_search(self, query: str, top_k: int = 5) -> str:
         query_vector = self.embed_model.embed_query(query)

@@ -1,5 +1,6 @@
 from graph import app
 from dotenv import load_dotenv
+from scripts import ingest_paper
 
 load_dotenv()
 
@@ -8,6 +9,9 @@ query = input("original query: ")
 inputs = {
     "original_query": query
 }
+
+sample_pdf = "data/input/Summary.pdf"
+ingest_paper(sample_pdf, "Pdf_file")
 
 for output in app.stream(inputs):
     for key, value in output.items():

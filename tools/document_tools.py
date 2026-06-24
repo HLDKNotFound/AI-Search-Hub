@@ -15,6 +15,10 @@ def lance_search(query: str) -> str:
     try:
         results = db_manager.similarity_search(
             query=query,
+            top_k=5
         )
+
+        return results
+    
     except Exception as e:
         return f"LANCEDB SEARCH ERROR: {str(e)}"
