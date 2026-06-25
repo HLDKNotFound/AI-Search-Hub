@@ -6,7 +6,7 @@ from agents import get_llm
 def create_manager_chain():
     llm = get_llm(
         temperature=0,
-        max_tokens=8000
+        max_tokens=7000
     )
     structured_llm = llm.with_structured_output(
         ResearchPlan

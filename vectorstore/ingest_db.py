@@ -1,7 +1,7 @@
 import os
 from vectorstore import LanceDBManager
 
-def ingest_paper(
+def ingest_db(
     pdf_file_path: str,
     source_name: str
 ):

@@ -1,6 +1,6 @@
 from graph import app
 from dotenv import load_dotenv
-from scripts import ingest_paper
+from vectorstore import ingest_db
 
 load_dotenv()
 
@@ -11,7 +11,7 @@ inputs = {
 }
 
 sample_pdf = "data/input/Summary.pdf"
-ingest_paper(sample_pdf, "Pdf_file")
+ingest_db(sample_pdf, "Pdf_file")
 
 for output in app.stream(inputs):
     for key, value in output.items():
