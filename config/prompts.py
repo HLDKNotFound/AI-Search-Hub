@@ -10,6 +10,7 @@ Given a research request:
 3. Assign each task to:
    - web_agent (real-time/web information)
    - paper_agent (academic and technical literature)
+4. Assign at least one task for each agent
 
 Return only data that matches the required structured schema.
 """),
