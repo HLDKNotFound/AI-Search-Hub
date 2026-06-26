@@ -4,7 +4,7 @@ from langchain_openai import ChatOpenAI
 def get_llm(
     model_name: str = "google/gemini-2.5-flash", 
     temperature: float = 0,
-    max_tokens: int = 5000
+    max_tokens: int = 3000
 ):
     api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
