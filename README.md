@@ -49,48 +49,7 @@ Instead of relying on a single LLM prompt, the system decomposes research into m
 
 # 🏗 System Architecture
 
-```text
-                         User Query
-                              │
-                              ▼
-                  ┌─────────────────────┐
-                  │ Manager / Planner   │
-                  └─────────────────────┘
-                              │
-                 Creates Structured Research Plan
-                              │
-          ┌───────────────────┴───────────────────┐
-          ▼                                       ▼
- ┌──────────────────┐                   ┌──────────────────┐
- │    Web Agent     │                   │   Paper Agent    │
- └──────────────────┘                   └──────────────────┘
-          │                                       │
-          │      Collect Research in Parallel     │
-          └───────────────────┬───────────────────┘
-                              ▼
-                    Shared Graph State
-                              │
-                              ▼
-                  ┌─────────────────────┐
-                  │ Visualization Agent │
-                  └─────────────────────┘
-                              │
-                              ▼
-                  ┌─────────────────────┐
-                  │    Writer Agent     │
-                  └─────────────────────┘
-                              │
-                              ▼
-                  ┌─────────────────────┐
-                  │    Critic Agent     │
-                  └─────────────────────┘
-                     │              │
-              Needs Revision      Pass
-                     │              │
-                     └──────┬───────┘
-                            ▼
-                    Final Markdown Report
-```
+![Graph](graph.png)
 
 ---
 
@@ -264,8 +223,8 @@ Final Report
 | Large Language Models | OpenAI GPT / Google Gemini |
 | Vector Database       | LanceDB                    |
 | Embedding Model       | BAAI/bge                   |
-| User Interface        | Streamlit                  |
 | Web Search            | Tavily API                 |
+| UI                    | Streamlit                  |
 | Visualization         | Plotly                     |
 | Python Execution      | Python REPL                |
 | Validation            | Pydantic                   |
