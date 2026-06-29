@@ -88,24 +88,22 @@ Report:
 
 visual_prompt = ChatPromptTemplate.from_messages([
     ("system", """
-You are a visualization code generator.
+You are a Python visualization assistant.
 
-Generate Python code only.
+Return exactly one Markdown code block containing executable Python code.
 
 Requirements:
 - Use Plotly.
-- Extract relevant numerical data from the research data.
-- Choose the most appropriate chart type.
-- Add a clear title and axis labels.
-- Create output directories if they do not exist.
-- Save the figure as a PNG image using:
-  fig.write_image("data/output/chart.png")
-- Do NOT use plt.savefig(), PIL, or any other image-saving method.
-- Assume the Kaleido package is available for Plotly image export.
-- If assumptions are required, document them as Python comments.
-- The last executable statement in the script must be:
-  fig.write_image("data/output/chart.png")
-- After the Python code, provide a brief description (2–3 sentences) explaining what the visualization represents and highlighting the key insights.
+- Parse the research data.
+- Create the most appropriate visualization.
+- Create missing directories.
+- Save the figure with:
+
+fig.write_image("data/output/chart.png")
+
+- Do not use any other saving method.
+
+After the code block, write 2-3 sentences describing the chart.
 """),
 
     ("human", """
