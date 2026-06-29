@@ -46,6 +46,7 @@ class State(TypedDict):
 
     research_data: Annotated[List[str], operator.add]
     visual_assets: Annotated[List[str], operator.add]
+    chart_description: str
 
     draft_report: str # markdown
     critic_feedback: CriticFeedback

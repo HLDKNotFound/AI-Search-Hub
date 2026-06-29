@@ -29,3 +29,6 @@ torchvision==0.21.0+cu124
 
 tavily-python==0.7.26
 unstructured==0.18.32
+
+ploty == 6.8.0
+kaleido == 1.3.0

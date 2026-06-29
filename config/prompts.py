@@ -94,20 +94,26 @@ Generate Python code only.
 
 Requirements:
 - Use Plotly.
-- Extract relevant numerical data.
-- Choose an appropriate chart type.
-- Add titles and axis labels.
-- Create directories if needed.
-- Save the chart to the provided path.
-- If assumptions are required, document them as code comments.
+- Extract relevant numerical data from the research data.
+- Choose the most appropriate chart type.
+- Add a clear title and axis labels.
+- Create output directories if they do not exist.
+- Save the figure as a PNG image using:
+  fig.write_image("data/output/chart.png")
+- Do NOT use plt.savefig(), PIL, or any other image-saving method.
+- Assume the Kaleido package is available for Plotly image export.
+- If assumptions are required, document them as Python comments.
+- The last executable statement in the script must be:
+  fig.write_image("data/output/chart.png")
+- After the Python code, provide a brief description (2–3 sentences) explaining what the visualization represents and highlighting the key insights.
 """),
 
     ("human", """
 Research Data:
 {research_data}
-
-Chart Path:
-{chart_path}/chart.png
+Save the figure as a PNG image using exactly:
+  fig.write_image("{chart_path}/chart.png")
+Do not use any other saving method.
 """)
 ])
 
@@ -143,6 +149,9 @@ Research Data:
 
 Visual Assets:
 {visual_assets}
+     
+Chart Desciption:
+{chart_description}
 
 Critic Feedback:
 {critic_feedback}
