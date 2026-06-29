@@ -1,10 +1,12 @@
 from langchain_huggingface import HuggingFaceEmbeddings
 from functools import lru_cache
 
+from config import DEVICE, EMBEDDING_MODEL
+
 @lru_cache(maxsize=1)
-def get_embedding_model(model_name: str = "BAAI/bge-m3") -> HuggingFaceEmbeddings:
+def get_embedding_model(model_name: str = EMBEDDING_MODEL) -> HuggingFaceEmbeddings:
     model_kwargs = {
-        "device": "cuda"
+        "device": DEVICE
     }
     encode_kwargs = {
         "normalize_embeddings": True

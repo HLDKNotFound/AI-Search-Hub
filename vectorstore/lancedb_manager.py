@@ -1,10 +1,11 @@
 import os
 import lancedb
 import pyarrow as pa
-from functools import lru_cache
 
 from vectorstore.embedding import get_embedding_model
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+from config import DEVICE
 
 def create_schema(vector_dim: int) -> pa.schema:
     return pa.schema([
@@ -25,9 +26,9 @@ class LanceDBManager:
         self.embed_model = get_embedding_model()
 
         vector = self.embed_model.embed_query("test")
-        vector_dim = len(vector)
+        self.vector_dim = len(vector)
 
-        schema = create_schema(vector_dim)
+        schema = create_schema(self.vector_dim)
 
         os.makedirs(self.db_path, exist_ok=True)
 
@@ -81,6 +82,11 @@ class LanceDBManager:
         ]
 
         self.table.add(data_to_insert)
+        """self.table.create_index(
+            num_partitions=self.vector_dim // 4,
+            num_sub_vectors=self.vector_dim // 8,
+            accelerator=DEVICE
+        )"""
         print(f"Store data from {source_name} to LanceDB")
 
     def similarity_search(self, query: str, top_k: int = 5) -> str:
